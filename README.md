@@ -18,7 +18,13 @@ npm i react-imx-logger
 
 #### Usage
 
-Create connection and connect 
+
+
+~~<mark>MAKE SURE TO ENABLE STOMP PLUGIN IN RABBIT MQ </mark>~~
+
+
+
+Create connection and connect
 
 ```
 mport { imxNodeLogger } from "node-imx-logger";
@@ -43,7 +49,7 @@ Now you can use or import the imxReactLogger everywhere in the app with default 
 ##### To send debug logs use :
 
 ```
-    imxReactLogger.error({
+    imxReactLogger.debug({
             appName: "react_example",
             context: "react_example",
             message: "hello from react example ",
@@ -52,7 +58,7 @@ Now you can use or import the imxReactLogger everywhere in the app with default 
 
 ###### To send errors logs use :
 
-    imxReactLogger.debug({
+    imxReactLogger.error({
             appName: "react_example",
             context: "react_example",
             message: "hello from react example ",
