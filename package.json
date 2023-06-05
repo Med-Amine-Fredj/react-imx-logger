@@ -1,6 +1,6 @@
 {
   "name": "react-imx-logger",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Imaxeam logger for react",
   "main": "index.js",
   "scripts": {
