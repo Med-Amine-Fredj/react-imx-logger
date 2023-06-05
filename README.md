@@ -94,3 +94,24 @@ imxReactLogger?.disconnect(() => {
 ```
   imxReactLogger?.enableErrorLogging();
 ```
+
+###### To check logging status :
+
+```
+   imxReactLogger.checkLoggingStatus() 
+     // return {
+      //  errorLoggingStatus: bool,
+       // debugLoggingStatus: bool,
+      // };
+
+
+    imxReactLogger.checkErrorLoggingStatus() //return bool
+
+    imxReactLogger.checkDebugLoggingStatus() // return bool
+```
+
+###### To change APP NAME inside the code after connect   :
+
+```
+  imxReactLogger.setAppName("example_app") 
+```
