@@ -18,30 +18,31 @@ npm i react-imx-logger
 
 #### Usage
 
-
-
-~~<mark>MAKE SURE TO ENABLE STOMP PLUGIN IN RABBIT MQ </mark>~~
-
-
+<mark>MAKE SURE TO ENABLE STOMP PLUGIN IN RABBIT MQ </mark>
 
 Create connection and connect
 
 ```
 mport { imxNodeLogger } from "node-imx-logger";
 
- imxReactLogger.createMqConnectionOverWS("ws://localhost:15674/ws")
-.connect(
-      {
-        login: "guest",
-        password: "guest",
-      },
-      (frame) => {
-        console.log("freame", frame);
-      },
-      (error) => {
-        console.log("error", error);
-      }
-    );
+  imxReactLogger.createMqConnectionOverWS(
+            {
+              host: "ws://127.0.0.1:15674/ws",
+              login: "login_example",
+              password: "password_example",
+            },
+            {
+              connectCallback(frame) {
+                console.log("frame");
+              },
+            },
+            "queue_name_example",
+            "app_name_example",
+            {
+              enableDebug: true,
+              enableErrors: true,
+            }
+          );
 ```
 
 Now you can use or import the imxReactLogger everywhere in the app with default existing methods by @StompClient [here](https://www.npmjs.com/package/stompjs) .
@@ -50,7 +51,6 @@ Now you can use or import the imxReactLogger everywhere in the app with default 
 
 ```
     imxReactLogger.debug({
-            appName: "react_example",
             context: "react_example",
             message: "hello from react example ",
           });
@@ -59,7 +59,38 @@ Now you can use or import the imxReactLogger everywhere in the app with default 
 ###### To send errors logs use :
 
     imxReactLogger.error({
-            appName: "react_example",
             context: "react_example",
             message: "hello from react example ",
           });
+
+###### To disconnect  :
+
+```
+imxReactLogger?.disconnect(() => {
+            console.log("disconnected");
+          });
+```
+
+###### To disble DEBUG logging :
+
+```
+  imxReactLogger?.disableDebugLogging();
+```
+
+###### To disble ERRORS logging :
+
+```
+  imxReactLogger?.disableErrorLogging();
+```
+
+###### To enable DEBUG logging :
+
+```
+  imxReactLogger?.enableDebugLogging();
+```
+
+###### To enable ERRORS logging :
+
+```
+  imxReactLogger?.enableErrorLogging();
+```
